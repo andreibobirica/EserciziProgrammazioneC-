@@ -1,57 +1,60 @@
 #include<iostream>
 using namespace std;
 
-void findMatch(int dimA,int dimP, int A[], int P[], int matchPrec, int posPrec);
-
 void leggi(int A[],int dim)
 {
-  int i=0;
-  while(i<dim)
+    int i=0;
+    while(i<dim)
     {
       cin>>A[i];
       i=i+1;
     }
 }
 
-main()
-{
-  int A[100],P[20],dimA,dimP,lungmin=-1,inizio=-1;
-  cin>>dimA>>dimP;
-  leggi(A,dimA);
-  leggi(P,dimP);
-  int scorriA=0;
-  
-  findMatch(dimA, dimP, A, P, dimP+1,-1);
 
-
-  if(lungmin==-1)
-    cout<<" nessun match trovato"<<endl;
-  else
-    cout<<"il miglior match inizia in "<< inizio<< " e ha larghezza "<<lungmin<<endl;
+int match( int A[], int P[], int dimA, int dimP){
+    cout <<" A:" << A[0] <<" P:" <<P[0] <<endl;
+    if(A[0]!=P[0])
+    return -1;
+    int lungmin = 0;
+    bool any;
+    for(int i=1; i<dimP;i++){
+        any=true;
+        for(int e=lungmin+1; e<dimA;e++){
+            lungmin++;
+            if(A[e]==P[i]){
+                //cout << " == " << A[e] << P[i] << " p:" << e << " " << i << endl;
+                any=false;
+                break;
+            }
+        } 
+    }
+    if(any)
+    lungmin=-1;
+    return lungmin;
 }
 
-void findMatch(int dimA,int dimP, int A[], int P[], int matchPrec, int posPrec){
-  for (size_t i = 1; i < dimA; i++)
-  {
-     if(A[posPrec+i] == P[0]){
-       int match = dimP;
-       for (size_t e = 0; e < dimA; e++)
-       {
-          for (size_t z = 0; z < dimP; z++)
-          {
-            int var1 =A[e];
-            int var2 =P[z+(dimP-match)];
-            if(var1==var2){
-              match--;
-              break;
-            }
-          }
-       }
-        if(match<matchPrec){
-         matchPrec=match;
-        findMatch(dimA, dimP, A, P, matchPrec,posPrec+1);
-         break;
-       }
-     }//FineIF
-  }
+main()
+{
+    int A[100],P[20],dimA,dimP;
+    cin>>dimA>>dimP;
+    leggi(A,dimA);
+    leggi(P,dimP);
+
+    int lungmin=-1,lungminB = -1,inizio=-1;
+    for(int i=0;i<dimA;i++){
+        lungmin = match(A+i,P,dimA,dimP);
+        //cout << lungmin <<endl;
+        //cout << lungminB <<endl;
+        if((lungmin>lungminB&&lungminB==-1)||(lungmin<lungminB&&lungminB>-1&&lungmin>-1)){
+            //cout << "found" <<endl;
+            lungminB = lungmin;
+            inizio = i;
+        }
+    }
+    lungmin = lungminB;
+    if(lungmin==-1)
+    cout<<" nessun match trovato"<<endl;
+    else
+    cout<<"il miglior match inizia in "<< inizio<< " e ha larghezza "<<++lungmin<<endl;
 }
