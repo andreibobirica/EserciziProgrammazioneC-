@@ -31,7 +31,9 @@ void togliDoppi(int A[],int & dimA){
     Per fare questo scroriamo uno alla volta gli elementi del array A di dimA posizioni.
     Ci avvaliamo della funzione elimina, la quale dato un array, e dato una variabile x, elimina dal suddetto array
     tutte le occorenze di x, mantenendo l'ordine del array e modificando la variabile dimA con la lunghezza effettiva del array.
-    Il ciclo comincia da i=0 e finisce fino a dimA-1, in quanto non serve esaminare l'ultima posizione, doppo spiegato il perchè.
+    Il ciclo comincia da i=0 e finisce fino a dimA-1, in quanto non serve esaminare l'ultima posizione,, questo
+    perchè se nelle precedenti, questa posizione non è risultata come doppiane, non dobbiamo controllare che questa sia un doppiane delle sue successive, dato
+    che le sue successive non esistono.
     se siamo sulla posizione i, il contenuto di A[i] non si deve ripetere nelle successive i+1 posizioni di A.
     ridefiniamo quindi la lunghezza di A, per eliminare solo i successivi elementi, con dimA= dimA-(1+i);, togliendo dal conteggio
     le posizioni iniziali, più la attuale, invochiamo come chiamante la funzione elimina, e come puntatore
