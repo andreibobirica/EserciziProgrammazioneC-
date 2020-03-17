@@ -37,13 +37,13 @@ void togliDoppi(int A[],int & dimA){
     se siamo sulla posizione i, il contenuto di A[i] non si deve ripetere nelle successive i+1 posizioni di A.
     ridefiniamo quindi la lunghezza di A, per eliminare solo i successivi elementi, con dimA= dimA-(1+i);, togliendo dal conteggio
     le posizioni iniziali, più la attuale, invochiamo come chiamante la funzione elimina, e come puntatore
-    di array passiamo A+i+1, cioè l'ultima parte del array, a partire dalla posizione successiva di A.
+    di array passiamo A+i+1, cioè l'ultima parte del array, a partire dalla posizione successiva di i.
     come x della nostra funzione elimina avremo A[i], nel caso questo sia veramente presente nelle posizioni successive esse
     verranno eliminate, nel caso contrario nulla accadrà.
-    Una volta terminata la funzione elimina, dobbiamo costare che sono state rimosse, se presenti, le occorenze indesiderabili all'interno di A
-    Ora quindi dobbiamo riprestinare A allo stato di partenza, cioè incrementando dim con le posizioni precedenti a i che aveva tolto precedentemente
+    Una volta terminata la funzione elimina, dobbiamo costatare che sono state rimosse, se presenti, le occorenze indesiderabili all'interno di A
+    Ora quindi dobbiamo riprestinare A allo stato di partenza, cioè incrementando dimA con le posizioni precedenti a i che aveva tolto precedentemente
     Questo lo facciamo con dimA= dimA+(1+i);
-    A questo punto dal nostrao array A sono state tolte tutte le occorenze doppie della posine di A i, (A[i]),
+    A questo punto dal nostrao array A sono state tolte tutte le occorenze doppie della posizione di A i, (A[i]),
     nelle iterazioni successive verrano esaminate le restanti posizioni, e a ogni ciclo dimA verrà ridimensianato, e gli elementi del array subiranno mmodifiche , in tal
     modo gli elementi doppi di A verranno tolti.
     */
