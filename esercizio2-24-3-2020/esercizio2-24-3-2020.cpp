@@ -56,38 +56,7 @@ void stampaH(int X[][4][5], int n_ele, int fetta){
     }//R1
     if(empty)
     cout << "fetta richiesta vuota" <<endl;
-    /**
-     * stratoMax è l'indice dello strato massimo che contiene ancora dati, anche se parzialmente.
-     * empty è la variabile che indica se lo strato presenta dei valori sulla fetta richiesta oppure non
-     * presenta nessun valore nella fetta richiesta. TRUE nel primo caso, FALSE nel secondo.
-     * R1=
-     * Condizione Iniziale: i=0
-     * Condizione Intermedia: 0=i<=stratoMax
-     * Condizione Finale: 0>stratoMax, si esce dal ciclo
-     * Il ciclo serve per scorrrere tutti gli strati (dove sono presenti dati) del array.
-     * 
-     * se e solo nella fetta richiesta sono presenti dati:
-     * <con indice si intente l'indice che parte da 0 e finisce a 60 scorrendo q;>
-     * primoI è l'indice del primo valore della fetta.
-     * ultimoI è l'indice del ultimo valore della fetta.
-     * Altrimenti abbiamo primoI che è comunque è l'indice primo della fetta richiesta,
-     * ma non contiene valori;ultimoI in questo caso corrisponde al ultimo elemento presente nel strato,
-     * però una fetta più in basso.
-     * I parametri interessanti però sono quando primoI<=n_ele
-     * Appunto quando l'indice della prima riga è inferiore al massimo di elementi immessi.
-     * Se sono presenti elementi nella fetta viene eseguito il corpo della condizione, altrimenti, non si fa niente
-     * e si va avanti con l'iterazione di R1 successiva.
-     * Nel caso positivo viene registrato che empty==false, cioè che sono presenti
-     * degli elementi nella fetta, e viene quindi eseguito il ciclo R2 per stampare gli elementi.
-     * 
-     * R2=
-     * Condizione iniziale: e=primoI
-     * Condizione Intermedia: primoI<=e<=ultimoI
-     * Condizione Finale: e>ultimoI, si esce dal ciclo
-     * Il ciclo serve per scrollare l'array q a partire dalla posizione primoI fino alla 
-     * posizione ultimoI incluso, ad ogni iterazione viene stampato il valore.
-     * Questi valori sono valori della fetta.
-     */
+    
 }
 //POST=(stampa la H-fetta fetta se ha almeno un valore intero, se tutti i valori sono indefiniti
 //stampa: "fetta richiesta vuota")
